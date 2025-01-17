@@ -8,12 +8,17 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    game_time = pygame.time.Clock()
+    dt = 0
     while(True):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        pygame.Surface.fill(screen, (0,0,0))
+        screen.fill("black")
         pygame.display.flip()
+        # limit the framerate to 60 FPS
+        time_pass = game_time.tick(60)
+        dt = time_pass/1000
 
 
 
